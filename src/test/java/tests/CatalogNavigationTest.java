@@ -38,7 +38,7 @@ public class CatalogNavigationTest {
 
         Configuration.browserSize = System.getProperty("browserSize");
         Configuration.baseUrl = System.getProperty("baseUrl");;
-        Configuration.remote = System.getProperty("selenoidRemoteURL");
+        //Configuration.remote = System.getProperty("selenoidRemoteURL");
         Configuration.headless = Boolean.parseBoolean(System.getProperty("isHeadless"));
         Configuration.browser = System.getProperty("browser");
         Configuration.browserVersion = System.getProperty("browserVersion");

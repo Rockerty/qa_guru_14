@@ -21,10 +21,6 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-test {
-    useJUnitPlatform()
-}
-
 allure {
     version.set("2.34.1")
     adapter {
@@ -71,6 +67,8 @@ allure {
 
 tasks.withType(Test) {
     useJUnitPlatform()
+
+    systemProperties = System.getProperties()
 
     testLogging {
         lifecycle {

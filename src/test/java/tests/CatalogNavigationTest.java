@@ -58,18 +58,30 @@ public class CatalogNavigationTest {
 
     @Test
     public void catalogNavigationForPostoyannyeMagnityTest() {
+        System.out.println("=== Диагностика ===");
+        System.out.println("1. baseUrl = " + System.getProperty("baseUrl"));
+        System.out.println("2. browser = " + System.getProperty("browser"));
+        System.out.println("3. mirMagnitovMainPage = " + mirMagnitovMainPage);
 
         step("Открыть главную страницу", () -> {
+            System.out.println("4. Вызов openPage()");
             mirMagnitovMainPage.openPage();
+            System.out.println("5. openPage() выполнен");
         });
 
         step("Перейти в каталоге к разделу второго уровня", () -> {
+            System.out.println("6. Вызов catalogSecondLevelNavigation()");
             mirMagnitovMainPage.catalogSecondLevelNavigation("Постоянные магниты", "Неодимовые магниты");
+            System.out.println("7. catalogSecondLevelNavigation() выполнен");
         });
 
         step("Проверить текущий URL", () -> {
+            System.out.println("8. Вызов urlAssert()");
             mirMagnitovMainPage.urlAssert("https://mirmagnitov.ru/catalog/postoyannye-magnity/neodimovye-magnity/");
+            System.out.println("9. urlAssert() выполнен");
         });
+
+        System.out.println("=== Тест завершен ===");
     }
 
     @Test

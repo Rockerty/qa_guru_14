@@ -28,8 +28,6 @@ public class MagnitShopTest {
 
     @BeforeAll
     static void allTestsSetUp() {
-        WebDriverManager.chromedriver().setup();
-
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
@@ -37,19 +35,17 @@ public class MagnitShopTest {
         ));
         Configuration.browserCapabilities = capabilities;
 
-        //Configuration.browserSize = System.getProperty("browserSize");
-        //Configuration.baseUrl = System.getProperty("baseUrl");;
-        //Configuration.remote = System.getProperty("selenoidRemoteURL");
-        //Configuration.headless = Boolean.parseBoolean(System.getProperty("isHeadless"));
-        //Configuration.browser = System.getProperty("browser");
-        //Configuration.browserVersion = System.getProperty("browserVersion");
+        Configuration.browserSize = System.getProperty("browserSize");
+        Configuration.baseUrl = System.getProperty("baseUrl");;
+        Configuration.remote = System.getProperty("selenoidRemoteURL");
+        Configuration.headless = Boolean.parseBoolean(System.getProperty("isHeadless"));
+        Configuration.browser = System.getProperty("browser");
+        Configuration.browserVersion = System.getProperty("browserVersion");
         Configuration.pageLoadStrategy = "eager";
-        //Configuration.timeout = 10000;
-
 
         Configuration.timeout = 10000;
-        Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl = "https://mirmagnitov.ru/";
+        //Configuration.browserSize = "1920x1080";
+        //Configuration.baseUrl = "https://mirmagnitov.ru/";
     }
 
     @AfterEach

@@ -5,10 +5,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.MirMagnitovMainPage;
 
@@ -54,6 +51,7 @@ public class MagnitShopTest {
     }
 
     @Test
+    @DisplayName("Главная страница: телефонный номер")
     public void phoneNumberOnMainPageTest() {
         step("Открыть главную страницу", () -> {
             mirMagnitovMainPage.openPage();
@@ -66,6 +64,7 @@ public class MagnitShopTest {
     }
 
     @Test
+    @DisplayName("Главная страница: текущий город")
     public void changeCurrentCityTest() {
         step("Открыть главную страницу", () -> {
             mirMagnitovMainPage.openPage();
@@ -82,6 +81,7 @@ public class MagnitShopTest {
     }
 
     @Test
+    @DisplayName("Главная страница: раздел 'Доставка и оплата'")
     public void urlDeliveryTabTest() {
         step("Открыть главную страницу", () -> {
             mirMagnitovMainPage.openPage();
@@ -97,6 +97,7 @@ public class MagnitShopTest {
     }
 
     @Test
+    @DisplayName("Главная страница: раздел 'Контакты'")
     public void urlContactTabTest() {
         step("Открыть главную страницу", () -> {
             mirMagnitovMainPage.openPage();
@@ -112,12 +113,13 @@ public class MagnitShopTest {
     }
 
     @Test
+    @DisplayName("Главная страница: раздел 'Помощь и советы'")
     public void urlFAQTabTest() {
         step("Открыть главную страницу", () -> {
             mirMagnitovMainPage.openPage();
         });
 
-        step("Нажать на раздел 'Контакты'", () -> {
+        step("Нажать на раздел 'Помощь и советы'", () -> {
             mirMagnitovMainPage.mainPageTabEnter("Помощь и советы");
         });
 
@@ -127,12 +129,13 @@ public class MagnitShopTest {
     }
 
     @Test
+    @DisplayName("Главная страница: раздел 'Купить оптом'")
     public void urlWholesalersTabTest() {
         step("Открыть главную страницу", () -> {
             mirMagnitovMainPage.openPage();
         });
 
-        step("Нажать на раздел 'Контакты'", () -> {
+        step("Нажать на раздел 'Купить оптом'", () -> {
             mirMagnitovMainPage.mainPageTabEnter("Купить оптом");
         });
 

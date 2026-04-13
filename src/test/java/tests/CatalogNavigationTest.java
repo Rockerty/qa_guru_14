@@ -4,10 +4,7 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.MirMagnitovMainPage;
 
@@ -52,6 +49,7 @@ public class CatalogNavigationTest {
     }
 
     @Test
+    @DisplayName("Навигация по каталогу: второй уровень вложенности")
     public void catalogNavigationForPostoyannyeMagnityTest() {
         step("Открыть главную страницу", () -> {
             mirMagnitovMainPage.openPage();
@@ -67,6 +65,7 @@ public class CatalogNavigationTest {
     }
 
     @Test
+    @DisplayName("Навигация по каталогу: третий уровень вложенности")
     public void catalogNavigationForSKleevymSloemTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         step("Открыть главную страницу", () -> {

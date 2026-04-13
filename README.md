@@ -60,3 +60,8 @@
 <p align="center">  
 <img title="Allure Overview Dashboard" src="images/screens/TG_report_csreen.png" width="850">  
 </p> 
+
+## Видео выполнения теста
+<p align="center">
+<img title="Selenoid Video" src="images/videos/4c407e132599fa4dd55a5d64d4811531.gif" width="550" height="350"  alt="video">   
+</p>

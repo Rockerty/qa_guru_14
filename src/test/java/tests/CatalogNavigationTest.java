@@ -37,9 +37,10 @@ public class CatalogNavigationTest {
         Configuration.headless = Boolean.parseBoolean(System.getProperty("isHeadless"));
         Configuration.browser = System.getProperty("browser");
         Configuration.browserVersion = System.getProperty("browserVersion");
-        Configuration.pageLoadStrategy = "eager";
 
+        Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 10000;
+
         //Configuration.browserSize = "1920x1080";
         //Configuration.baseUrl = "https://mirmagnitov.ru/";
     }

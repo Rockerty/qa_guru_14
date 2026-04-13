@@ -4,7 +4,6 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import helpers.Attach;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -39,9 +38,10 @@ public class MagnitShopTest {
         Configuration.headless = Boolean.parseBoolean(System.getProperty("isHeadless"));
         Configuration.browser = System.getProperty("browser");
         Configuration.browserVersion = System.getProperty("browserVersion");
-        Configuration.pageLoadStrategy = "eager";
 
+        Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 10000;
+
         //Configuration.browserSize = "1920x1080";
         //Configuration.baseUrl = "https://mirmagnitov.ru/";
     }

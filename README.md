@@ -29,13 +29,11 @@
 <img width="6%" title="Selenide" src="images/icons/Selenide.svg">
 <img width="6%" title="Selenoid" src="images/icons/Selenoid.svg">
 <img width="6%" title="Allure Report" src="images/icons/Allure_Report.svg">
-<img width="5%" title="Allure TestOps" src="images/icons/AllureTestOps.svg">
 <img width="6%" title="Gradle" src="images/icons/Gradle.svg">
 <img width="6%" title="JUnit5" src="images/icons/JUnit5.svg">
 <img width="6%" title="GitHub" src="images/icons/GitHub.svg">
 <img width="6%" title="Jenkins" src="images/icons/Jenkins.svg">
 <img width="6%" title="Telegram" src="images/icons/Telegram.svg">
-<img width="5%" title="Jira" src="images/icons/Jira.svg">
 </p>
 
 ## Запуск автотестов

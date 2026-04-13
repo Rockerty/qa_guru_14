@@ -6,6 +6,7 @@
 <br>
 <img width="16%" title="IntelliJ IDEA" src="images/icons/logoMirMagnitov2.svg">
 </p>
+
 [Интернет магазин "Мир магнитов](https://example.com "Перейти на сайт \"Мир магнитов\"") — лидер магнитной продукции в России.
 
 # Тестовые наборы

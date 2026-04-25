@@ -5,8 +5,6 @@ import java.util.List;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.url;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MirMagnitovMainPage {
@@ -40,10 +38,6 @@ public class MirMagnitovMainPage {
 
     public void mainPageTabEnter(String tabName){
         $x(String.format(mainPageTabNameXPathTemplate, tabName)).scrollTo().click();
-    }
-
-    public void urlAssert(String url){
-        assertEquals(url, url());
     }
 
     public void catalogSecondLevelNavigation(String firstLevelItem, String secondLevelItem){

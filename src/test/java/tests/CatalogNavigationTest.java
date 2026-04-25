@@ -7,6 +7,7 @@ import pages.MirMagnitovMainPage;
 import testbases.MirMagnitovTestBase;
 
 import static com.codeborne.selenide.logevents.SelenideLogger.step;
+import static helpers.UrlAssert.urlAssert;
 
 public class CatalogNavigationTest extends MirMagnitovTestBase {
 
@@ -24,7 +25,7 @@ public class CatalogNavigationTest extends MirMagnitovTestBase {
         });
 
         step("Проверить текущий URL", () -> {
-            mirMagnitovMainPage.urlAssert("https://mirmagnitov.ru/catalog/postoyannye-magnity/neodimovye-magnity/");
+            urlAssert("https://mirmagnitov.ru/catalog/postoyannye-magnity/neodimovye-magnity/");
         });
     }
 
@@ -41,7 +42,7 @@ public class CatalogNavigationTest extends MirMagnitovTestBase {
         });
 
         step("Проверить текущий URL", () -> {
-            mirMagnitovMainPage.urlAssert("https://mirmagnitov.ru/catalog/gibkie-magnity/magnitnaya-lenta/s-kleevym-sloem/");
-        });
+            urlAssert("https://mirmagnitov.ru/catalog/gibkie-magnity/magnitnaya-lenta/s-kleevym-sloem/");
+       });
     }
 }

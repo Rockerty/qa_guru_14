@@ -5,6 +5,7 @@ import pages.MirMagnitovMainPage;
 import testbases.MirMagnitovTestBase;
 
 import static com.codeborne.selenide.logevents.SelenideLogger.step;
+import static helpers.UrlAssert.urlAssert;
 import static testdata.TestData.*;
 
 public class MagnitShopTest extends MirMagnitovTestBase {
@@ -48,7 +49,7 @@ public class MagnitShopTest extends MirMagnitovTestBase {
         });
 
         step("Проверить текущий URL", () -> {
-            mirMagnitovMainPage.urlAssert("https://mirmagnitov.ru/delivery/");
+            urlAssert("https://mirmagnitov.ru/delivery/");
         });
     }
 
@@ -64,7 +65,7 @@ public class MagnitShopTest extends MirMagnitovTestBase {
         });
 
         step("Проверить текущий URL", () -> {
-            mirMagnitovMainPage.urlAssert("https://mirmagnitov.ru/contacts/");
+            urlAssert("https://mirmagnitov.ru/contacts/");
         });
     }
 
@@ -80,7 +81,7 @@ public class MagnitShopTest extends MirMagnitovTestBase {
         });
 
         step("Проверить текущий URL", () -> {
-            mirMagnitovMainPage.urlAssert("https://mirmagnitov.ru/faq/");
+            urlAssert("https://mirmagnitov.ru/faq/");
         });
     }
 
@@ -96,7 +97,7 @@ public class MagnitShopTest extends MirMagnitovTestBase {
         });
 
         step("Проверить текущий URL", () -> {
-            mirMagnitovMainPage.urlAssert("https://mirmagnitov.ru/promotions/");
+            urlAssert("https://mirmagnitov.ru/promotions/");
         });
     }
 }

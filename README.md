@@ -24,30 +24,36 @@
 ## Cтек технологий
 
 <p align="center">
-<img width="6%" title="IntelliJ IDEA" src="images/icons/Intelij_IDEA.svg">
-<img width="6%" title="Java" src="images/icons/Java.svg">
-<img width="6%" title="Selenide" src="images/icons/Selenide.svg">
-<img width="6%" title="Selenoid" src="images/icons/Selenoid.svg">
-<img width="6%" title="Allure Report" src="images/icons/Allure_Report.svg">
-<img width="6%" title="Gradle" src="images/icons/Gradle.svg">
-<img width="6%" title="JUnit5" src="images/icons/JUnit5.svg">
-<img width="6%" title="GitHub" src="images/icons/GitHub.svg">
-<img width="6%" title="Jenkins" src="images/icons/Jenkins.svg">
-<img width="6%" title="Telegram" src="images/icons/Telegram.svg">
+<a href="https://www.jetbrains.com/idea/" target="_blank" title="Перейти на официальный сайт IntelliJ IDEA"><img width="6%" title="IntelliJ IDEA" src="images/icons/Intelij_IDEA.svg"></a>
+<a href="https://www.java.com/" target="_blank" title="Перейти на официальный сайт Java"><img width="6%" title="Java" src="images/icons/Java.svg"></a>
+<a href="https://selenide.org/" target="_blank" title="Перейти на официальный сайт Selenide"><img width="6%" title="Selenide" src="images/icons/Selenide.svg"></a>
+<a href="https://aerokube.com/selenoid/" target="_blank" title="Перейти на официальный сайт Selenoid"><img width="6%" title="Selenoid" src="images/icons/Selenoid.svg"></a>
+<a href="https://qameta.io/allure-report/" target="_blank" title="Перейти на официальный сайт Allure Report"><img width="6%" title="Allure Report" src="images/icons/Allure_Report.svg"></a>
+<a href="https://gradle.org/" target="_blank" title="Перейти на официальный сайт Gradle"><img width="6%" title="Gradle" src="images/icons/Gradle.svg"></a>
+<a href="https://junit.org/junit5/" target="_blank" title="Перейти на официальный сайт JUnit5"><img width="6%" title="JUnit5" src="images/icons/JUnit5.svg"></a>
+<a href="https://github.com/" target="_blank" title="Перейти на официальный сайт GitHub"><img width="6%" title="GitHub" src="images/icons/GitHub.svg"></a>
+<a href="https://www.jenkins.io/" target="_blank" title="Перейти на официальный сайт Jenkins"><img width="6%" title="Jenkins" src="images/icons/Jenkins.svg"></a>
+<a href="https://telegram.org/" target="_blank" title="Перейти на официальный сайт Telegram"><img width="6%" title="Telegram" src="images/icons/Telegram.svg"></a>
 </p>
 
 ## Запуск автотестов
+
+## __Локальный запуск__
+
+> ./gradlew clean test "-DbaseUrl=https://mirmagnitov.ru" "-Dbrowser=chrome" "-DbrowserSize=1920x1080" "-DisHeadless=false"
 
 ## __Терминал__ 
 > ./gradlew clean test "-DbaseUrl=https://mirmagnitov.ru" "-DselenoidRemoteURL=https://user1:1234@selenoid.autotests.cloud/wd/hub" "-Dbrowser=chrome" "-DbrowserSize=1920x1080" "-DisHeadless=false" "-DbrowserVersion=128.0"  
 
 ## [__Jenkins__](https://jenkins.autotests.cloud/view/java_students/job/C40-Rockerty-Mir-Magnotov/) с параметрами
 
-1. BaseURL
-2. SelenoidRemoteURL
-3. Browser
-4. BrowserVersion
-5. BrowserSize
+Перед запуском сборки в Jenkins необходимо указать параметры:
+
+1. Адрес тестируемого сайта (`BaseURL`).
+2. Адрес удаленной среды, в которой будет запущен браузер (`SelenoidRemoteURL`).
+3. Браузер, в котором будут выполняться автотесты (`Browser`).
+4. Версия браузера для запуска автотестов (`BrowserVersion`).
+5. Размер окна браузера (`BrowserSize`).
 
 ## Пример автоматического отчета Allure
 

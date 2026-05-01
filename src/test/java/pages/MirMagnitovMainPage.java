@@ -40,19 +40,16 @@ public class MirMagnitovMainPage {
         $x(String.format(mainPageTabNameXPathTemplate, tabName)).scrollTo().click();
     }
 
-    public void catalogSecondLevelNavigation(String firstLevelItem, String secondLevelItem){
+    public void catalogButtonClick(){
         $x(catalogButton).scrollTo().click();
-        $x(String.format(catalogItemByNameXPathTemplate, firstLevelItem)).hover();
-        $x(String.format(catalogItemByNameXPathTemplate, secondLevelItem)).hover();
-        $x(String.format(catalogItemByNameXPathTemplate, secondLevelItem)).scrollTo().click();
     }
 
-    public void catalogThirdLevelNavigation(String firstLevelItem, String secondLevelItem, String thirdLevelItem){
-        $x(catalogButton).scrollTo().click();
-        $x(String.format(catalogItemByNameXPathTemplate, firstLevelItem)).hover();
-        $x(String.format(catalogItemByNameXPathTemplate, secondLevelItem)).hover();
-        $x(String.format(catalogItemByNameXPathTemplate, thirdLevelItem)).hover();
-        $x(String.format(catalogItemByNameXPathTemplate, thirdLevelItem)).scrollTo().click();
+    public void catalogItemHover(String catalogItemName){
+        $x(String.format(catalogItemByNameXPathTemplate, catalogItemName)).hover();
+    }
+
+    public void catalogItemClick(String catalogItemName){
+        $x(String.format(catalogItemByNameXPathTemplate, catalogItemName)).scrollTo().click();
     }
 
     public void socialNetworkIconsAssert(String socialNetworkName) {

@@ -2,7 +2,6 @@ package tests;
 
 import org.junit.jupiter.api.*;
 import pages.MirMagnitovMainPage;
-import testbases.MirMagnitovTestBase;
 
 import static com.codeborne.selenide.logevents.SelenideLogger.step;
 import static helpers.UrlAssert.urlAssert;

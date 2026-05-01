@@ -24,18 +24,16 @@
 ## Cтек технологий
 
 <p align="center">
-
-[<img width="6%" title="IntelliJ IDEA" src="images/icons/Intelij_IDEA.svg">](https://www.jetbrains.com/idea/)
-[<img width="6%" title="Java" src="images/icons/Java.svg">](https://www.java.com/)
-[<img width="6%" title="Selenide" src="images/icons/Selenide.svg">](https://selenide.org/)
-[<img width="6%" title="Selenoid" src="images/icons/Selenoid.svg">](https://aerokube.com/selenoid/)
-[<img width="6%" title="Allure Report" src="images/icons/Allure_Report.svg">](https://qameta.io/allure-report/)
-[<img width="6%" title="Gradle" src="images/icons/Gradle.svg">](https://gradle.org/)
-[<img width="6%" title="JUnit5" src="images/icons/JUnit5.svg">](https://junit.org/junit5/)
-[<img width="6%" title="GitHub" src="images/icons/GitHub.svg">](https://github.com/)
-[<img width="6%" title="Jenkins" src="images/icons/Jenkins.svg">](https://www.jenkins.io/)
-[<img width="6%" title="Telegram" src="images/icons/Telegram.svg">](https://telegram.org/)
-
+<a href="https://www.jetbrains.com/idea/" target="_blank" title="Перейти на официальный сайт IntelliJ IDEA"><img width="6%" title="IntelliJ IDEA" src="images/icons/Intelij_IDEA.svg"></a>
+<a href="https://www.java.com/" target="_blank" title="Перейти на официальный сайт Java"><img width="6%" title="Java" src="images/icons/Java.svg"></a>
+<a href="https://selenide.org/" target="_blank" title="Перейти на официальный сайт Selenide"><img width="6%" title="Selenide" src="images/icons/Selenide.svg"></a>
+<a href="https://aerokube.com/selenoid/" target="_blank" title="Перейти на официальный сайт Selenoid"><img width="6%" title="Selenoid" src="images/icons/Selenoid.svg"></a>
+<a href="https://qameta.io/allure-report/" target="_blank" title="Перейти на официальный сайт Allure Report"><img width="6%" title="Allure Report" src="images/icons/Allure_Report.svg"></a>
+<a href="https://gradle.org/" target="_blank" title="Перейти на официальный сайт Gradle"><img width="6%" title="Gradle" src="images/icons/Gradle.svg"></a>
+<a href="https://junit.org/junit5/" target="_blank" title="Перейти на официальный сайт JUnit5"><img width="6%" title="JUnit5" src="images/icons/JUnit5.svg"></a>
+<a href="https://github.com/" target="_blank" title="Перейти на официальный сайт GitHub"><img width="6%" title="GitHub" src="images/icons/GitHub.svg"></a>
+<a href="https://www.jenkins.io/" target="_blank" title="Перейти на официальный сайт Jenkins"><img width="6%" title="Jenkins" src="images/icons/Jenkins.svg"></a>
+<a href="https://telegram.org/" target="_blank" title="Перейти на официальный сайт Telegram"><img width="6%" title="Telegram" src="images/icons/Telegram.svg"></a>
 </p>
 
 ## Запуск автотестов

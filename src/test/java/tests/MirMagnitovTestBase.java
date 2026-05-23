@@ -12,6 +12,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
 
+import static config.ConfigReader.webDriverConfig;
+
 public class MirMagnitovTestBase {
 
     @BeforeEach
@@ -21,26 +23,24 @@ public class MirMagnitovTestBase {
 
     @BeforeAll
     static void allTestsSetUp() {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-                "enableVNC", true,
-                "enableVideo", true
-        ));
-        Configuration.browserCapabilities = capabilities;
+        Configuration.browser = webDriverConfig.getBrowser();
+        Configuration.browserVersion = webDriverConfig.getBrowserVersion();
+        Configuration.browserSize = webDriverConfig.getBrowserSize();
+        Configuration.baseUrl = webDriverConfig.getBaseUrl();
 
-        Configuration.browserSize = System.getProperty("browserSize");
-        Configuration.baseUrl = System.getProperty("baseUrl");;
-        Configuration.remote = System.getProperty("selenoidRemoteURL");
-        Configuration.headless = Boolean.parseBoolean(System.getProperty("isHeadless"));
-        Configuration.browser = System.getProperty("browser");
-        Configuration.browserVersion = System.getProperty("browserVersion");
+        if (webDriverConfig.getRemoteUrl() != null) {
+            Configuration.remote = webDriverConfig.getRemoteUrl().toString();
+
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                    "enableVNC", true,
+                    "enableVideo", true
+            ));
+            Configuration.browserCapabilities = capabilities;
+        }
 
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 10000;
-
-//        Configuration.browser = "Chrome";
-//        Configuration.browserSize = "1920x1080";
-//        Configuration.baseUrl = "https://mirmagnitov.ru/";
     }
 
     @AfterEach

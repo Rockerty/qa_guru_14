@@ -12,7 +12,8 @@ dependencies {
             "com.codeborne:selenide:7.14.0",
             "org.junit.jupiter:junit-jupiter",
             "io.qameta.allure:allure-selenide:2.33.0",
-            "io.github.bonigarcia:webdrivermanager:5.9.2"
+            "io.github.bonigarcia:webdrivermanager:5.9.2",
+            "org.aeonbits.owner:owner:1.0.12"
     )
     testImplementation platform("org.junit:junit-bom:5.9.1")
 }
@@ -60,9 +61,11 @@ tasks.withType(Test) {
     systemProperty("allure.results.directory", "build/allure-results")
 
     testLogging {
-        lifecycle {
-            events "started", "skipped", "failed", "standard_error", "standard_out"
-            exceptionFormat "short"
-        }
+        events "started", "skipped", "failed", "standard_error", "standard_out"
+        exceptionFormat "full"
+        showExceptions true
+        showCauses true
+        showStackTraces true
+        showStandardStreams true
     }
 }

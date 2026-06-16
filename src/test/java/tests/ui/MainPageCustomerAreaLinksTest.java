@@ -1,40 +1,14 @@
-package tests;
+package tests.ui;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import pages.MirMagnitovMainPage;
 
 import static com.codeborne.selenide.logevents.SelenideLogger.step;
 import static helpers.UrlAssert.urlAssert;
-import static testdata.TestData.*;
 
-public class MagnitShopTest extends MirMagnitovTestBase {
+public class MainPageCustomerAreaLinksTest extends MirMagnitovTestBase {
     MirMagnitovMainPage mirMagnitovMainPage = new MirMagnitovMainPage();
-
-    @Test
-    @DisplayName("Главная страница: телефонный номер")
-    public void phoneNumberOnMainPageTest() {
-        step("Открыть главную страницу", () -> {
-            mirMagnitovMainPage.openPage();
-        });
-
-        step("Проверить телефонный номер на главной странице", () -> {
-            mirMagnitovMainPage.phoneNumberOnMainPageAssert(phones);
-        });
-
-    }
-
-    @Test
-    @DisplayName("Главная страница: иконки социальных сетей")
-    public void socialNetworkIconsTest() {
-        step("Открыть главную страницу", () -> {
-            mirMagnitovMainPage.openPage();
-        });
-
-        step("Проверить отображении иконок социальных сетей", () -> {
-            mirMagnitovMainPage.socialNetworkIconsAssert("Max");
-            mirMagnitovMainPage.socialNetworkIconsAssert("WhatsApp");
-        });
-    }
 
     @Test
     @DisplayName("Главная страница: раздел 'Доставка и оплата'")
@@ -86,7 +60,7 @@ public class MagnitShopTest extends MirMagnitovTestBase {
 
     @Test
     @DisplayName("Главная страница: раздел 'Акции и скидки'")
-    public void urlWholesalersTabTest() {
+    public void urlPromotionsTabTest() {
         step("Открыть главную страницу", () -> {
             mirMagnitovMainPage.openPage();
         });

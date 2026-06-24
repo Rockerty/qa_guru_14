@@ -1,16 +1,16 @@
-package tests;
+package tests.ui;
 
-import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import pages.MirMagnitovCatalogPage;
 import pages.MirMagnitovMainPage;
 
 import static com.codeborne.selenide.logevents.SelenideLogger.step;
 import static helpers.UrlAssert.urlAssert;
 
 public class CatalogNavigationTest extends MirMagnitovTestBase {
-
-    MirMagnitovMainPage mirMagnitovMainPage = new MirMagnitovMainPage();
+    private final MirMagnitovMainPage mirMagnitovMainPage = new MirMagnitovMainPage();
+    private final MirMagnitovCatalogPage mirMagnitovCatalogPage = new MirMagnitovCatalogPage();
 
     @Test
     @DisplayName("Навигация по каталогу: второй уровень вложенности")
@@ -20,15 +20,15 @@ public class CatalogNavigationTest extends MirMagnitovTestBase {
         });
 
         step("Открыть каталог", () -> {
-            mirMagnitovMainPage.catalogButtonClick();
+            mirMagnitovCatalogPage.catalogButtonClick();
         });
 
         step("Навести курсор на раздел первого уровня", () -> {
-            mirMagnitovMainPage.catalogItemHover("Постоянные магниты");
+            mirMagnitovCatalogPage.catalogItemHover("Постоянные магниты");
         });
 
         step("Перейти в раздел второго уровня", () -> {
-            mirMagnitovMainPage.catalogItemClick("Неодимовые магниты");
+            mirMagnitovCatalogPage.catalogItemClick("Неодимовые магниты");
         });
 
         step("Проверить текущий URL", () -> {
@@ -39,26 +39,24 @@ public class CatalogNavigationTest extends MirMagnitovTestBase {
     @Test
     @DisplayName("Навигация по каталогу: третий уровень вложенности")
     public void catalogNavigationForSKleevymSloemTest() {
-        SelenideLogger.addListener("allure", new AllureSelenide());
-
         step("Открыть главную страницу", () -> {
             mirMagnitovMainPage.openPage();
         });
 
         step("Открыть каталог", () -> {
-            mirMagnitovMainPage.catalogButtonClick();
+            mirMagnitovCatalogPage.catalogButtonClick();
         });
 
         step("Навести курсор на раздел первого уровня", () -> {
-            mirMagnitovMainPage.catalogItemHover("Гибкие магниты");
+            mirMagnitovCatalogPage.catalogItemHover("Гибкие магниты");
         });
 
         step("Навести курсор на раздел второго уровня", () -> {
-            mirMagnitovMainPage.catalogItemHover("Магнитная лента");
+            mirMagnitovCatalogPage.catalogItemHover("Магнитная лента");
         });
 
         step("Перейти в раздел третьего уровня", () -> {
-            mirMagnitovMainPage.catalogItemClick("Лента с клеевым слоем");
+            mirMagnitovCatalogPage.catalogItemClick("Лента с клеевым слоем");
         });
 
         step("Проверить текущий URL", () -> {

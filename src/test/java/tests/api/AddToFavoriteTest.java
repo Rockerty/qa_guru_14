@@ -1,14 +1,14 @@
 package tests.api;
 
-import api.CartApiClient;
 import api.FavoriteApiClient;
 import api.SessionApiClient;
-import io.restassured.response.Response;
+import models.favorite.AddToFavoriteRequestModel;
+import models.favorite.SuccessfulAddToFavoriteResponseModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
-import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AddToFavoriteTest extends TestBase {
     private String sessionId;
@@ -33,9 +33,13 @@ public class AddToFavoriteTest extends TestBase {
         });
 
         step("Добавление товара в изранное", () -> {
-            Response response = FavoriteApiClient.addToFavorite(sessionId, uid, location, sessid, productId);
+            AddToFavoriteRequestModel addToFavoriteRequestModel = new AddToFavoriteRequestModel();
+            addToFavoriteRequestModel.setProductId(productId);
 
-            response.then().body("state.productIds[0]", equalTo(productId));
+            SuccessfulAddToFavoriteResponseModel successfulAddToFavoriteResponseModel =
+                    FavoriteApiClient.addToFavorite(sessionId, uid, location, sessid, addToFavoriteRequestModel);
+
+            assertEquals(productId, successfulAddToFavoriteResponseModel.getState().getProductIds().get(0));
         });
     }
 }

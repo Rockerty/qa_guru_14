@@ -7,14 +7,15 @@ import static org.hamcrest.Matchers.*;
 import static specs.DefaultSpec.defaultRequestSpec;
 import static specs.DefaultSpec.defaultResponseSpec;
 
+import models.cart.AddToCartRequestModel;
+import models.cart.ClearCartRequestModel;
+import models.cart.RemoveOneItemFromCartRequestModel;
+import models.cart.SuccessfulAddToCartResponseModel;
+
 public class CartApiClient {
 
-    public static Response addToCart(String sessionId, String uid, String location, String sessid,
-                                     int productId, int quantity) {
-        String requestBody = String.format(
-                "{\"state\":false,\"product\":[%d],\"quantity\":%d}",
-                productId, quantity
-        );
+    public static SuccessfulAddToCartResponseModel addToCart(String sessionId, String uid, String location, String sessid,
+                                                             AddToCartRequestModel addToCartRequestModel) {
 
         return given()
                 .spec(defaultRequestSpec)
@@ -22,7 +23,7 @@ public class CartApiClient {
                 .cookie("BITRIX_SM_SALE_UID", uid)
                 .cookie("BITRIX_SM_LOCATION_CITY", location)
                 .queryParam("sessid", sessid)
-                .body(requestBody)
+                .body(addToCartRequestModel)
                 .when()
                 .post("/cart/add/")
                 .then()
@@ -30,23 +31,18 @@ public class CartApiClient {
                 .body("success", is(true))
                 .spec(defaultResponseSpec)
                 .extract()
-                .response();
+                .as(SuccessfulAddToCartResponseModel.class);
     }
 
     public static Response addIncorrectItemToCart(String sessionId, String uid, String location, String sessid,
-                                     int productId, int quantity) {
-        String requestBody = String.format(
-                "{\"state\":false,\"product\":[%d],\"quantity\":%d}",
-                productId, quantity
-        );
-
+                                                  AddToCartRequestModel addToCartRequestModel) {
         return given()
                 .spec(defaultRequestSpec)
                 .cookie("PHP_SESSID", sessionId)
                 .cookie("BITRIX_SM_SALE_UID", uid)
                 .cookie("BITRIX_SM_LOCATION_CITY", location)
                 .queryParam("sessid", sessid)
-                .body(requestBody)
+                .body(addToCartRequestModel)
                 .when()
                 .post("/cart/add/")
                 .then()
@@ -70,18 +66,15 @@ public class CartApiClient {
                 .extract().response();
     }
 
-    public static Response removeOneItemFromCart(String sessionId, String uid, String location, String sessid, int cartId) {
-        String requestBody = String.format(
-                "{\"state\":true,\"cartId\":[%d]}", cartId
-        );
-
+    public static Response removeOneItemFromCart(String sessionId, String uid, String location, String sessid,
+                                                 RemoveOneItemFromCartRequestModel removeOneItemFromCartRequestModel) {
         return given()
                 .spec(defaultRequestSpec)
                 .cookie("PHP_SESSID", sessionId)
                 .cookie("BITRIX_SM_SALE_UID", uid)
                 .cookie("BITRIX_SM_LOCATION_CITY", location)
                 .queryParam("sessid", sessid)
-                .body(requestBody)
+                .body(removeOneItemFromCartRequestModel)
                 .when()
                 .post("/cart/remove/")
                 .then()
@@ -89,21 +82,19 @@ public class CartApiClient {
                 .body("success", is(true))
                 .body("state.inCart", hasSize(0))
                 .spec(defaultResponseSpec)
-                .extract().response();
+                .extract()
+                .response();
     }
 
-    public static Response clearCart(String sessionId, String uid, String location, String sessid) {
-        String requestBody =
-                "{\"state\":true"
-        ;
-
+    public static Response clearCart(String sessionId, String uid, String location, String sessid,
+                                     ClearCartRequestModel clearCartRequestModel) {
         return given()
                 .spec(defaultRequestSpec)
                 .cookie("PHP_SESSID", sessionId)
                 .cookie("BITRIX_SM_SALE_UID", uid)
                 .cookie("BITRIX_SM_LOCATION_CITY", location)
                 .queryParam("sessid", sessid)
-                .body(requestBody)
+                .body(clearCartRequestModel)
                 .when()
                 .post("/cart/clear/")
                 .then()
@@ -111,6 +102,7 @@ public class CartApiClient {
                 .body("success", is(true))
                 .body("state.inCart", hasSize(0))
                 .spec(defaultResponseSpec)
-                .extract().response();
+                .extract()
+                .response();
     }
 }

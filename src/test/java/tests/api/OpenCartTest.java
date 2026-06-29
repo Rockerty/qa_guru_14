@@ -2,12 +2,15 @@ package tests.api;
 
 import api.CartApiClient;
 import api.SessionApiClient;
+import models.cart.AddToCartRequestModel;
+import models.cart.SuccessfulAddToCartResponseModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static io.qameta.allure.Allure.step;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class OpenCartTest extends TestBase {
@@ -35,11 +38,18 @@ public class OpenCartTest extends TestBase {
         });
 
         step("Добавление в корзину корректного товара", () -> {
-            CartApiClient.addToCart(sessionId, uid, location, sessid, productId, quantity)
-                    .then()
-                    .statusCode(200)
-                    .body("success", is(true))
-                    .body("state.inCart[0].productId", equalTo(187544));
+            AddToCartRequestModel addToCartRequestModel = new AddToCartRequestModel();
+            addToCartRequestModel.setState(false);
+            addToCartRequestModel.setProduct(List.of(productId));
+            addToCartRequestModel.setQuantity(quantity);
+
+            SuccessfulAddToCartResponseModel successfulAddToCartResponseModel =
+                    CartApiClient.addToCart(sessionId, uid, location, sessid, addToCartRequestModel);
+
+            assertEquals(quantity, successfulAddToCartResponseModel.getState().getInCart().get(0).getQuantity());
+            assertEquals(productId, successfulAddToCartResponseModel.getState().getInCart().get(0).getProductId());
+            assertEquals(quantity, successfulAddToCartResponseModel.getState().getTotal().getCount());
+            assertEquals(quantity, successfulAddToCartResponseModel.getState().getTotalHeader().getCount());
         });
 
         step("Получение корзины и проверка товара", () -> {

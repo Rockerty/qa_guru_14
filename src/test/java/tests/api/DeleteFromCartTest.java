@@ -2,13 +2,17 @@ package tests.api;
 
 import api.CartApiClient;
 import api.SessionApiClient;
+import models.cart.AddToCartRequestModel;
+import models.cart.ClearCartRequestModel;
+import models.cart.RemoveOneItemFromCartRequestModel;
+import models.cart.SuccessfulAddToCartResponseModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
-import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import io.restassured.response.Response;
+import java.util.List;
 
 public class DeleteFromCartTest extends TestBase {
     private String sessionId;
@@ -38,13 +42,23 @@ public class DeleteFromCartTest extends TestBase {
         });
 
         step("Добавление в корзину товара", () -> {
-            Response response = CartApiClient.addToCart(sessionId, uid, location, sessid, productId, quantity);
+            AddToCartRequestModel addToCartRequestModel = new AddToCartRequestModel();
+            addToCartRequestModel.setState(false);
+            addToCartRequestModel.setProduct(List.of(productId));
+            addToCartRequestModel.setQuantity(quantity);
 
-            cartId = response.jsonPath().getInt("state.inCart[0].cartId");
+            SuccessfulAddToCartResponseModel successfulAddToCartResponseModel =
+                    CartApiClient.addToCart(sessionId, uid, location, sessid, addToCartRequestModel);
+
+            cartId = successfulAddToCartResponseModel.getState().getInCart().get(0).getCartId();
         });
 
         step("Удаление товара из корзины", () -> {
-            CartApiClient.removeOneItemFromCart(sessionId, uid, location, sessid, cartId);
+            RemoveOneItemFromCartRequestModel removeOneItemFromCartRequestModel = new RemoveOneItemFromCartRequestModel();
+            removeOneItemFromCartRequestModel.setState(true);
+            removeOneItemFromCartRequestModel.setCartId(List.of(cartId));
+
+            CartApiClient.removeOneItemFromCart(sessionId, uid, location, sessid, removeOneItemFromCartRequestModel);
         });
     }
 
@@ -59,23 +73,34 @@ public class DeleteFromCartTest extends TestBase {
         });
 
         step("Добавление в корзину товара", () -> {
-            Response response = CartApiClient.addToCart(sessionId, uid, location, sessid, productId, quantity);
+            AddToCartRequestModel addToCartRequestModel = new AddToCartRequestModel();
+            addToCartRequestModel.setState(false);
+            addToCartRequestModel.setProduct(List.of(productId));
+            addToCartRequestModel.setQuantity(quantity);
 
-            response.then().body("state.inCart[0].productId", equalTo(productId));
+            SuccessfulAddToCartResponseModel successfulAddToCartResponseModel =
+                    CartApiClient.addToCart(sessionId, uid, location, sessid, addToCartRequestModel);
 
-            cartId = response.jsonPath().getInt("state.inCart[0].cartId");
+            assertEquals(productId, successfulAddToCartResponseModel.getState().getInCart().get(0).getProductId());
         });
 
         step("Добавление второго товара в корзину", () -> {
-            Response response = CartApiClient.addToCart(sessionId, uid, location, sessid, secondProductId, quantity);
+            AddToCartRequestModel addToCartRequestModel = new AddToCartRequestModel();
+            addToCartRequestModel.setState(false);
+            addToCartRequestModel.setProduct(List.of(secondProductId));
+            addToCartRequestModel.setQuantity(quantity);
 
-            response.then().body("state.inCart[1].productId", equalTo(secondProductId));
+            SuccessfulAddToCartResponseModel successfulAddToCartResponseModel =
+                    CartApiClient.addToCart(sessionId, uid, location, sessid, addToCartRequestModel);
 
-            cartId = response.jsonPath().getInt("state.inCart[1].cartId");
+            assertEquals(secondProductId, successfulAddToCartResponseModel.getState().getInCart().get(1).getProductId());
         });
 
-        step("Удаление товара из корзины", () -> {
-            CartApiClient.clearCart(sessionId, uid, location, sessid);
+        step("Очистка корзины", () -> {
+            ClearCartRequestModel clearCartRequestModel = new ClearCartRequestModel();
+            clearCartRequestModel.setState(true);
+
+            CartApiClient.clearCart(sessionId, uid, location, sessid, clearCartRequestModel);
         });
     }
 }

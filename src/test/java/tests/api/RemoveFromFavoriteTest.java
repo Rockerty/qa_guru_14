@@ -2,12 +2,15 @@ package tests.api;
 
 import api.FavoriteApiClient;
 import api.SessionApiClient;
-import io.restassured.response.Response;
+import models.favorite.AddToFavoriteRequestModel;
+import models.favorite.ClearFavoriteRequestModel;
+import models.favorite.RemoveFromFavoriteRequestModel;
+import models.favorite.SuccessfulAddToFavoriteResponseModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
-import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RemoveFromFavoriteTest extends TestBase {
     private String sessionId;
@@ -31,14 +34,48 @@ public class RemoveFromFavoriteTest extends TestBase {
             sessid = data[3];
         });
 
-        step("Добавление товара в изранное", () -> {
-            Response response = FavoriteApiClient.addToFavorite(sessionId, uid, location, sessid, productId);
+        step("Добавление товара в избранное", () -> {
+            AddToFavoriteRequestModel addToFavoriteRequestModel = new AddToFavoriteRequestModel();
+            addToFavoriteRequestModel.setProductId(productId);
 
-            response.then().body("state.productIds[0]", equalTo(productId));
+            SuccessfulAddToFavoriteResponseModel successfulAddToFavoriteResponseModel =
+                    FavoriteApiClient.addToFavorite(sessionId, uid, location, sessid, addToFavoriteRequestModel);
+
+            assertEquals(productId, successfulAddToFavoriteResponseModel.getState().getProductIds().get(0));
         });
 
-        step("Удаление товара из изранного", () -> {
-            Response response = FavoriteApiClient.removeFromFavorite(sessionId, uid, location, sessid, productId);
+        step("Удаление товара из избранного", () -> {
+            RemoveFromFavoriteRequestModel removeFromFavoriteRequestModel = new RemoveFromFavoriteRequestModel();
+            removeFromFavoriteRequestModel.setProductId(productId);
+
+            FavoriteApiClient.removeFromFavorite(sessionId, uid, location, sessid, removeFromFavoriteRequestModel);
+        });
+    }
+
+    @Test
+    public void clearFavoriteListTest(){
+        step("Получение сессии и токена", () -> {
+            String[] data = SessionApiClient.getSessionData();
+            sessionId = data[0];
+            uid = data[1];
+            location = data[2];
+            sessid = data[3];
+        });
+
+        step("Добавление товара в избранное", () -> {
+            AddToFavoriteRequestModel addToFavoriteRequestModel = new AddToFavoriteRequestModel();
+            addToFavoriteRequestModel.setProductId(productId);
+
+            SuccessfulAddToFavoriteResponseModel successfulAddToFavoriteResponseModel =
+                    FavoriteApiClient.addToFavorite(sessionId, uid, location, sessid, addToFavoriteRequestModel);
+
+            assertEquals(productId, successfulAddToFavoriteResponseModel.getState().getProductIds().get(0));
+        });
+
+        step("Очистка списка избранного", () -> {
+            ClearFavoriteRequestModel clearFavoriteRequestModel = new ClearFavoriteRequestModel();
+
+            FavoriteApiClient.clearFavorite(sessionId, uid, location, sessid, clearFavoriteRequestModel);
         });
     }
 }

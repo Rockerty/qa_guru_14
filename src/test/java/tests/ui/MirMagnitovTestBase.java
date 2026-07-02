@@ -8,6 +8,11 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+import java.util.Map;
+
+import static config.ConfigReader.webDriverConfig;
 
 public class MirMagnitovTestBase {
 
@@ -18,28 +23,28 @@ public class MirMagnitovTestBase {
 
     @BeforeAll
     static void allTestsSetUp() {
-//        Configuration.browser = webDriverConfig.getBrowser();
-//        Configuration.browserVersion = webDriverConfig.getBrowserVersion();
-//        Configuration.browserSize = webDriverConfig.getBrowserSize();
-//        Configuration.baseUrl = webDriverConfig.getBaseUrl();
-//
-//        if (webDriverConfig.getRemoteUrl() != null) {
-//            Configuration.remote = webDriverConfig.getRemoteUrl().toString();
-//
-//            DesiredCapabilities capabilities = new DesiredCapabilities();
-//            capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-//                    "enableVNC", true,
-//                    "enableVideo", true
-//            ));
-//            Configuration.browserCapabilities = capabilities;
-//        }
+        Configuration.browser = webDriverConfig.getBrowser();
+        Configuration.browserVersion = webDriverConfig.getBrowserVersion();
+        Configuration.browserSize = webDriverConfig.getBrowserSize();
+        Configuration.baseUrl = webDriverConfig.getBaseUrl();
+
+        if (webDriverConfig.getRemoteUrl() != null) {
+            Configuration.remote = webDriverConfig.getRemoteUrl().toString();
+
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                    "enableVNC", true,
+                    "enableVideo", true
+            ));
+            Configuration.browserCapabilities = capabilities;
+        }
 
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 10000;
 
-        Configuration.browser = "chrome";
-        Configuration.baseUrl = "https://mirmagnitov.ru";
-        Configuration.browserSize = "1920x1080";
+        //Configuration.browser = "chrome";
+        //Configuration.baseUrl = "https://mirmagnitov.ru";
+        //Configuration.browserSize = "1920x1080";
     }
 
     @AfterEach

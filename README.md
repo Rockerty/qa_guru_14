@@ -102,9 +102,23 @@
 
 > ./gradlew clean test "-DbaseUrl=https://mirmagnitov.ru" "-Dbrowser=chrome" "-DbrowserSize=1920x1080" "-DisHeadless=false"
 
-## __Терминал__ 
-> ./gradlew clean test "-DbaseUrl=https://mirmagnitov.ru" "-DremoteUrl=https://{user}:{password}@selenoid.autotests.cloud/wd/hub" "-Dbrowser=chrome" "-DbrowserSize=1920x1080" "-DisHeadless=false" "-DbrowserVersion=128.0"
+### Настройка удалённого запуска
 
+После клонирования проекта создайте копию файла:
+
+`src/test/resources/config/remote.example.properties`
+
+Переименуйте созданную копию в:
+
+`remote.properties`
+
+В файле `remote.properties` замените `{user}` и `{password}` реальными учётными данными Selenoid.
+
+Файл `remote.properties` добавлен в `.gitignore`, поэтому реальные учётные данные не попадут в репозиторий.
+
+## __Терминал__
+
+> ./gradlew clean test "-DbaseUrl=https://mirmagnitov.ru" "-DremoteUrl=https://{user}:{password}@selenoid.autotests.cloud/wd/hub" "-Dbrowser=chrome" "-DbrowserSize=1920x1080" "-DisHeadless=false" "-DbrowserVersion=128.0"
 <a id="jenkins"></a>
 
 ## [__Jenkins__](https://jenkins.autotests.cloud/view/java_students/job/C40-Rockerty-Mir-Magnotov/) с параметрами

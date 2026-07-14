@@ -1,10 +1,8 @@
 package tests.api;
 
 import api.CartApiClient;
-import api.SessionApiClient;
 import models.cart.AddToCartRequestModel;
 import models.cart.SuccessfulAddToCartResponseModel;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -14,29 +12,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class OpenCartTest extends TestBase {
-    private String sessionId;
-    private String uid;
-    private String location;
-    private String sessid;
-    private int productId;
-    private int quantity;
-
-    @BeforeEach
-    public void allTestsSetUp() {
-        productId = 187544;
-        quantity = 1;
-    }
+    private final int productId = 187544;
+    private final int quantity = 1;;
 
     @Test
     public void successfulOpenCartWithItemTest() {
-        step("Получение сессии и токена", () -> {
-            String[] data = SessionApiClient.getSessionData();
-            sessionId = data[0];
-            uid = data[1];
-            location = data[2];
-            sessid = data[3];
-        });
-
         step("Добавление в корзину корректного товара", () -> {
             AddToCartRequestModel addToCartRequestModel = new AddToCartRequestModel();
             addToCartRequestModel.setState(false);

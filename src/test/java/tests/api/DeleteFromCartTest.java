@@ -1,12 +1,10 @@
 package tests.api;
 
 import api.CartApiClient;
-import api.SessionApiClient;
 import models.cart.AddToCartRequestModel;
 import models.cart.ClearCartRequestModel;
 import models.cart.RemoveOneItemFromCartRequestModel;
 import models.cart.SuccessfulAddToCartResponseModel;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
@@ -15,32 +13,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.List;
 
 public class DeleteFromCartTest extends TestBase {
-    private String sessionId;
-    private String uid;
-    private String location;
-    private String sessid;
-    private int productId;
-    private int secondProductId;
-    private int quantity;
+    private final int productId = 187544;
+    private final int secondProductId = 188031;
+    private final int quantity = 1;
     private int cartId;
-
-    @BeforeEach
-    public void allTestsSetUp() {
-        productId = 187544;
-        quantity = 1;
-        secondProductId = 188031;
-    }
 
     @Test
     public void deleteOneItemFromCartTest() {
-        step("Получение сессии и токена", () -> {
-            String[] data = SessionApiClient.getSessionData();
-            sessionId = data[0];
-            uid = data[1];
-            location = data[2];
-            sessid = data[3];
-        });
-
         step("Добавление в корзину товара", () -> {
             AddToCartRequestModel addToCartRequestModel = new AddToCartRequestModel();
             addToCartRequestModel.setState(false);
@@ -64,14 +43,6 @@ public class DeleteFromCartTest extends TestBase {
 
     @Test
     public void removeAllItemsFromCartTest() {
-        step("Получение сессии и токена", () -> {
-            String[] data = SessionApiClient.getSessionData();
-            sessionId = data[0];
-            uid = data[1];
-            location = data[2];
-            sessid = data[3];
-        });
-
         step("Добавление в корзину товара", () -> {
             AddToCartRequestModel addToCartRequestModel = new AddToCartRequestModel();
             addToCartRequestModel.setState(false);

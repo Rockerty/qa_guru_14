@@ -1,4 +1,4 @@
-# Проект автоматизации тестов для сайта "Мир магнитов"
+# Проект автоматизации тестов для сайта [«Мир магнитов»](https://mirmagnitov.ru/)
 
 ## О сайте  
 <p align="center">
@@ -103,7 +103,7 @@
 > ./gradlew clean test "-DbaseUrl=https://mirmagnitov.ru" "-Dbrowser=chrome" "-DbrowserSize=1920x1080" "-DisHeadless=false"
 
 ## __Терминал__ 
-> ./gradlew clean test "-DbaseUrl=https://mirmagnitov.ru" "-DremoteUrl=https://user1:1234@selenoid.autotests.cloud/wd/hub" "-Dbrowser=chrome" "-DbrowserSize=1920x1080" "-DisHeadless=false" "-DbrowserVersion=128.0"
+> ./gradlew clean test "-DbaseUrl=https://mirmagnitov.ru" "-DremoteUrl=https://{user}:{password}@selenoid.autotests.cloud/wd/hub" "-Dbrowser=chrome" "-DbrowserSize=1920x1080" "-DisHeadless=false" "-DbrowserVersion=128.0"
 
 <a id="jenkins"></a>
 

@@ -42,3 +42,6 @@ out/
 
 ### Mac OS ###
 .DS_Store
+
+# Remote credentials
+src/test/resources/config/remote.properties
